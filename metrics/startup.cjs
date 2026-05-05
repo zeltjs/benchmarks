@@ -74,6 +74,12 @@ const measureStartupNRoutesZeltjs = runSample(async () => {
   }
 })
 
+const measureStartupNRoutesNestjs = runSample(async () => {
+  await runNode('./nestjs-express/dist/routes-runner-1.js')
+  await runNode('./nestjs-express/dist/routes-runner-10.js')
+  await runNode('./nestjs-express/dist/routes-runner-100.js')
+})
+
 measureStartupListen()
   .then(measureStartupListenHono)
   .then(measureStartupListenNestjs)
@@ -82,3 +88,4 @@ measureStartupListen()
   .then(measureStartupNSchemaRoutes)
   .then(measureStartupNRoutesHono)
   .then(measureStartupNRoutesZeltjs)
+  .then(measureStartupNRoutesNestjs)
