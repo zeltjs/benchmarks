@@ -35,6 +35,11 @@ jobs:
     - name: Install dependencies
       run: npm i --ignore-scripts
 
+    - name: Build metrics subpackages
+      run: |
+        cd metrics/nestjs-express && npm i && npm run build && cd ../..
+        cd metrics/zeltjs && npm i && npm run build && cd ../..
+
     - name: Run metrics
       run: |
         npm run metrics:run

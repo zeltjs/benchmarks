@@ -1,0 +1,11 @@
+{
+  "name": "metrics-zeltjs",
+  "type": "module",
+  "scripts": {
+    "build": "tsc"
+  },
+  "devDependencies": {
+    "@types/node": "^25.6.0",
+    "typescript": "5.8.3"
+  }
+}

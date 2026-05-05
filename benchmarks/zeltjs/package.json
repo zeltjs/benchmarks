@@ -1,0 +1,14 @@
+{
+  "name": "zeltjs-bench",
+  "type": "module",
+  "scripts": {
+    "build": "tsc"
+  },
+  "dependencies": {
+    "@zeltjs/core": "0.0.1",
+    "@zeltjs/adapter-node": "0.0.1"
+  },
+  "devDependencies": {
+    "typescript": "5.8.3"
+  }
+}
