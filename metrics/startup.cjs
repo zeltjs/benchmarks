@@ -20,9 +20,12 @@ const runWorker = (file) => {
   })
 }
 
-const runNode = (file) => {
+const runNode = (file, env = {}) => {
   return new Promise((resolve, reject) => {
-    const child = spawn('node', [path.join(__dirname, file)], { stdio: 'inherit' })
+    const child = spawn('node', [path.join(__dirname, file)], {
+      stdio: 'inherit',
+      env: { ...process.env, ...env }
+    })
     child.on('exit', (code) => code === 0 ? resolve() : reject(new Error(`Exit ${code}`)))
   })
 }
@@ -54,9 +57,35 @@ const measureStartupNSchemaRoutes = runSample(async () => {
   }
 })
 
+const measureStartupNRoutesHono = runSample(async () => {
+  for (let n = 1; n <= 10000; n *= 10) {
+    await new Promise((resolve) => {
+      new Worker(
+        path.join(__dirname, './startup-routes-hono.cjs'),
+        { env: { routes: n } }
+      ).on('exit', resolve)
+    })
+  }
+})
+
+const measureStartupNRoutesZeltjs = runSample(async () => {
+  for (let n = 1; n <= 10000; n *= 10) {
+    await runNode('./zeltjs/dist/routes-runner.js', { routes: n })
+  }
+})
+
+const measureStartupNRoutesNestjs = runSample(async () => {
+  for (let n = 1; n <= 10000; n *= 10) {
+    await runNode('./nestjs-express/dist/routes-runner.js', { routes: n })
+  }
+})
+
 measureStartupListen()
   .then(measureStartupListenHono)
   .then(measureStartupListenNestjs)
   .then(measureStartupListenZeltjs)
   .then(measureStartupNRoutes)
   .then(measureStartupNSchemaRoutes)
+  .then(measureStartupNRoutesHono)
+  .then(measureStartupNRoutesZeltjs)
+  .then(measureStartupNRoutesNestjs)
