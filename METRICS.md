@@ -1,7 +1,7 @@
 # Metrics
 * __Machine:__ linux x64 | 4 vCPUs | 15.6GB Mem
 * __Node:__ `v24.15.0`
-* __Run:__ Tue May 05 2026 11:27:19 GMT+0000 (Coordinated Universal Time)
+* __Run:__ Tue May 05 2026 11:29:30 GMT+0000 (Coordinated Universal Time)
 * __Method:__ `npm run metrics` (samples: 5)
 * __startup:__ time elapsed to setup the application
 * __listen:__ time elapsed until the http server is ready to accept requests (cold start)
@@ -10,32 +10,35 @@
 
 | Framework | startup(ms) | listen(ms) |
 |-----------|-------------|------------|
-| Hono | 27.03 | 28.75 |
-| Zeltjs | 42.18 | 47.08 |
-| Fastify (original) | 67.02 | 75.28 |
-| NestJS (Express) | 124.82 | 198.20 |
+| Hono | 34.55 | 36.73 |
+| Zeltjs | 57.50 | 63.64 |
+| Fastify (original) | 89.79 | 100.86 |
+| NestJS (Express) | 169.95 | 268.70 |
 
 ## Many Routes Startup
 
 | Framework | startup(ms) | listen(ms) |
 |-----------|-------------|------------|
-| Hono (1 routes) | 25.54 | 27.11 |
-| Hono (10 routes) | 25.82 | 27.41 |
-| Hono (100 routes) | 25.83 | 27.44 |
-| Hono (1000 routes) | 26.47 | 28.10 |
-| Hono (10000 routes) | 30.32 | 32.15 |
-| Zeltjs (1 routes) | 40.28 | 46.60 |
-| Zeltjs (100 routes) | 39.06 | 46.65 |
-| Zeltjs (10 routes) | 41.52 | 48.03 |
-| Zeltjs (1000 routes) | 39.85 | 58.55 |
-| Fastify (1 routes) | 66.34 | 74.23 |
-| Fastify (10 routes) | 67.96 | 76.65 |
-| Fastify (100 routes) | 71.52 | 86.02 |
-| Fastify (10 routes + schema) | 65.93 | 88.85 |
-| Fastify (1 routes + schema) | 66.46 | 88.97 |
-| Fastify (100 routes + schema) | 71.56 | 96.73 |
-| Zeltjs (10000 routes) | 40.76 | 145.37 |
-| Fastify (1000 routes + schema) | 121.67 | 170.16 |
-| Fastify (1000 routes) | 131.37 | 173.28 |
-| Fastify (10000 routes + schema) | 2888.34 | 3057.84 |
-| Fastify (10000 routes) | 2632.71 | 3657.89 |
+| Hono (1 routes) | 34.69 | 36.88 |
+| Hono (10 routes) | 34.65 | 36.88 |
+| Hono (100 routes) | 34.87 | 37.07 |
+| Hono (1000 routes) | 35.71 | 37.95 |
+| Hono (10000 routes) | 41.46 | 44.37 |
+| Zeltjs (100 routes) | 52.51 | 62.36 |
+| Zeltjs (10 routes) | 53.71 | 62.45 |
+| Zeltjs (1 routes) | 54.49 | 62.50 |
+| Zeltjs (1000 routes) | 53.18 | 79.89 |
+| Fastify (1 routes) | 88.67 | 99.11 |
+| Fastify (10 routes) | 90.84 | 102.43 |
+| Fastify (100 routes) | 100.27 | 119.98 |
+| Fastify (1 routes + schema) | 89.14 | 121.32 |
+| Fastify (10 routes + schema) | 89.98 | 122.44 |
+| Fastify (100 routes + schema) | 99.19 | 135.16 |
+| Zeltjs (10000 routes) | 54.95 | 189.13 |
+| Fastify (1000 routes) | 185.10 | 241.18 |
+| Fastify (1000 routes + schema) | 191.27 | 253.07 |
+| NestJS (1 routes) | 166.75 | 265.44 |
+| NestJS (10 routes) | 169.23 | 274.65 |
+| NestJS (100 routes) | 171.40 | 286.78 |
+| Fastify (10000 routes + schema) | 3453.59 | 3657.62 |
+| Fastify (10000 routes) | 3271.02 | 4594.78 |
