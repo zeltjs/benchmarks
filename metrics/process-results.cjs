@@ -29,7 +29,7 @@ function getDisplayName (filename) {
   if (frameworkNameMap[base]) {
     return frameworkNameMap[base]
   }
-  const routeMatch = base.match(/^(\d+)-startup-routes(-schema)?(-hono|-zeltjs|-nestjs)?$/)
+  const routeMatch = base.match(/^(\d+)-startup-routes(-schema)?(-hono|-zeltjs|-nestjs|-adonisjs)?$/)
   if (routeMatch) {
     const count = routeMatch[1]
     const hasSchema = routeMatch[2] ? ' + schema' : ''
