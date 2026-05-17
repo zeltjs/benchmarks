@@ -39,6 +39,7 @@ jobs:
       run: |
         cd metrics/nestjs-express && npm i && npm run build && cd ../..
         cd metrics/zeltjs && npm i && npm run build && cd ../..
+        cd metrics/adonisjs && npm i && npm run build && cd ../..
 
     - name: Run metrics
       run: |
