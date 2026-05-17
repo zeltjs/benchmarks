@@ -17,5 +17,5 @@ const handle = await run(routes, () => {
     `${loadingTime} | ${listenTime}\n`,
     { encoding: 'utf-8', flag: 'a' }
   )
-  handle.shutdown()
+  process.nextTick(() => handle.shutdown())
 })
