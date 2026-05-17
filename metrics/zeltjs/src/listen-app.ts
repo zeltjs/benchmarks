@@ -1,5 +1,5 @@
-import { serve } from '@zeltjs/adapter-node'
-import { createHttpApp, Controller, Get } from '@zeltjs/core'
+import { onNode } from '@zeltjs/adapter-node'
+import { createApp, Controller, Get } from '@zeltjs/core'
 
 @Controller('/')
 class AppController {
@@ -9,6 +9,11 @@ class AppController {
   }
 }
 
-const app = createHttpApp({ controllers: [AppController] })
+const app = createApp({ http: { controllers: [AppController] } })
 
-export const run = (onReady: () => void) => serve(app, { port: 0 }, onReady)
+export const run = async (onReady: () => void) => {
+  const node = await onNode(app)
+  const handle = await node.listen(0)
+  onReady()
+  return handle
+}

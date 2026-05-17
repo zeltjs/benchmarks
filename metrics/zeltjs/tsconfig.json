@@ -9,7 +9,8 @@
     "emitDecoratorMetadata": true,
     "strict": false,
     "esModuleInterop": true,
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "types": ["node"]
   },
   "include": ["src"]
 }

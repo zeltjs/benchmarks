@@ -9,12 +9,12 @@ const start = process.hrtime()
 const { run } = await import('./listen-app.js')
 const loadingTime = process.hrtime(start)
 
-const server = run(() => {
+const handle = await run(() => {
   const listenTime = process.hrtime(start)
   writeFileSync(
     join(__dirname, '..', '..', 'startup-listen-zeltjs.cjs.txt'),
     `${loadingTime} | ${listenTime}\n`,
     { encoding: 'utf-8', flag: 'a' }
   )
-  server.close()
+  handle.shutdown()
 })
