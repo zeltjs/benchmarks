@@ -13,13 +13,15 @@ const frameworkNameMap = {
   'startup-listen-fastify': 'Fastify',
   'startup-listen-nestjs-express': 'NestJS (Express)',
   'startup-listen-zeltjs': 'Zeltjs',
+  'startup-listen-adonisjs': 'AdonisJS',
   'startup-listen': 'Fastify (original)'
 }
 
 const routeFrameworkMap = {
   hono: 'Hono',
   zeltjs: 'Zeltjs',
-  nestjs: 'NestJS'
+  nestjs: 'NestJS',
+  adonisjs: 'AdonisJS'
 }
 
 function getDisplayName (filename) {

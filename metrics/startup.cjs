@@ -34,6 +34,7 @@ const measureStartupListen = runSample(() => runWorker('./startup-listen.cjs'))
 const measureStartupListenHono = runSample(() => runWorker('./startup-listen-hono.cjs'))
 const measureStartupListenNestjs = runSample(() => runNode('./nestjs-express/dist/listen-runner.js'))
 const measureStartupListenZeltjs = runSample(() => runNode('./zeltjs/dist/listen-runner.js'))
+const measureStartupListenAdonisjs = runSample(() => runNode('./adonisjs/dist/listen-runner.js'))
 
 const measureStartupNRoutes = runSample(async () => {
   for (let n = 1; n <= 10000; n *= 10) {
@@ -80,12 +81,20 @@ const measureStartupNRoutesNestjs = runSample(async () => {
   await runNode('./nestjs-express/dist/routes-runner-100.js')
 })
 
+const measureStartupNRoutesAdonisjs = runSample(async () => {
+  for (let n = 1; n <= 1000; n *= 10) {
+    await runNode('./adonisjs/dist/routes-runner.js', { routes: n })
+  }
+})
+
 measureStartupListen()
   .then(measureStartupListenHono)
   .then(measureStartupListenNestjs)
   .then(measureStartupListenZeltjs)
+  .then(measureStartupListenAdonisjs)
   .then(measureStartupNRoutes)
   .then(measureStartupNSchemaRoutes)
   .then(measureStartupNRoutesHono)
   .then(measureStartupNRoutesZeltjs)
   .then(measureStartupNRoutesNestjs)
+  .then(measureStartupNRoutesAdonisjs)
